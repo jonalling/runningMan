@@ -161,22 +161,4 @@ $( document ).ready(function() {
     }
 	});
 
- //    $('.button').on({'touchstart' : function() {
- //    	$(this).toggleClass('active'); // toggle current clicked element  
-	//     $('.button').not(this).removeClass('active'); // remove active from the others
-	//     pauseAnimation()
-	// }
-	// });
-
-	// $('.button').on({'touchend' : function() {
- //    	setTimeout(function() {
- //        changeSpeed()
- //    	}, 600);
-	// }
-	// });
-
-    //
-    // Play/Pause on click
-    //
-
 });
