@@ -1,0 +1,560 @@
+@mixin animation-play-state($paused) {
+  -webkit-animation-play-state: $paused; 
+  -moz-animation-play-state:    $paused; 
+  -o-animation-play-state:      $paused; 
+  animation-play-state:         $paused;
+}
+
+@mixin transform-origin($origin) {
+  -webkit-transform-origin: $origin; 
+  -moz-transform-origin:    $origin; 
+  -o-transform-origin:      $origin; 
+  transform-origin:         $origin;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation; 
+  -moz-animation:    $animation; 
+  -o-animation:      $animation; 
+  animation:         $animation;
+}
+
+@mixin animation-name($name) {
+  -webkit-animation-name: $name; 
+  -moz-animation-name:    $name; 
+  -o-animation-name:      $name; 
+  animation-name:         $name;
+}
+
+@mixin animation-duration($duration) {
+  -webkit-animation-duration: $duration; 
+  -moz-animation-duration:    $duration; 
+  -o-animation-duration:      $duration; 
+  animation-duration:         $duration;
+}
+
+@mixin animation-timing-function($timing) {
+  -webkit-animation-timing-function: $timing; 
+  -moz-animation-timing-function:    $timing; 
+  -o-animation-timing-function:      $timing; 
+  animation-timing-function:         $timing;
+}
+
+@mixin animation-iteration-count($count) {
+  -webkit-animation-iteration-count: $count; 
+  -moz-animation-iteration-count:    $count; 
+  -o-animation-iteration-count:      $count; 
+  animation-iteration-count:         $count;
+}
+
+@mixin animation-direction($direction) {
+  -webkit-animation-direction: $direction; 
+  -moz-animation-direction:    $direction; 
+  -o-animation-direction:      $direction; 
+  animation-direction:         $direction;
+}
+
+@mixin animation-delay($delay) {
+  -webkit-animation-delay: $delay; 
+  -moz-animation-delay:    $delay; 
+  -o-animation-delay:      $delay; 
+  animation-delay:         $delay;
+}
+
+@mixin transform-rotate($rotate) {
+  -webkit-transform: rotate($rotate); 
+  -moz-transform:    rotate($rotate); 
+  -o-transform:      rotate($rotate); 
+  transform:         rotate($rotate);
+}
+
+@mixin transform-dimension($dimensionX,$dimensionY,$dimensionZ) {
+  -webkit-transform: translate3d($dimensionX,$dimensionY,$dimensionZ);
+  -moz-transform:    translate3d($dimensionX,$dimensionY,$dimensionZ); 
+  -o-transform:      translate3d($dimensionX,$dimensionY,$dimensionZ); 
+  transform:         translate3d($dimensionX,$dimensionY,$dimensionZ);
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+body {
+  background-color: #32353E;
+  overflow:hidden;
+  max-width: 100%;
+}
+
+.container {
+  top: 50%; // IMPORTANT 
+  left: 50%; // IMPORTANT 
+  display: block;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  margin-top: -250px; // HALF OF THE HEIGHT 
+  margin-left: -250px; // HALF OF THE WIDTH
+}
+
+svg#RM7-ink {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+svg#newYork-ink {
+  position: absolute;
+  left: -300px;
+  height: 500px;
+  bottom: 36px;
+}
+
+.slider {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+}
+
+.buttonGroup {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 331px;
+  margin-left: -165.5px;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 10px 15px;
+  line-height: 1.4;
+  border: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #455878;
+  font-family: Open Sans;
+  font-size: 15px;
+  color: #999;
+}
+
+.button:hover {
+  border-color: #a1fad0;
+}
+
+.active {
+  background-color: #a1fad0;
+  border-color: #a1fad0;
+  font-weight: 600;
+}
+
+//
+// ANIMATIONS
+//
+
+
+#RM7-ink {
+  @include transform-origin(0px 0px);
+  @include animation-name(runningman);
+  @include animation-duration(6s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(1);
+  @include animation-direction(normal);
+}
+
+@include keyframes(runningman) {
+  0% {
+    @include transform-dimension(-1200px, 0, 0);
+  }
+  100% {
+    @include transform-dimension(0, 0, 0);
+  }
+}
+
+#wholeBody.animated {
+
+  @include transform-origin(129.14px 118.073px);
+  @include animation-name(wholeBody);
+  @include animation-duration(0.3529411764705882s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.1764705882352941s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(wholeBody) {
+  50% {
+    @include transform-dimension(0, -9.272px, 0);
+  }
+}
+
+#upperBody.animated {
+  @include transform-origin(129.14px 118.073px);
+  @include animation-name(upperBody);
+  @include animation-duration(0.3529411764705882s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.1764705882352941s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(upperBody) {
+  50% {
+    @include transform-rotate(3.25deg);
+  }
+}
+
+#torso {
+  fill: #92CCCE;
+}
+
+//
+// RIGHT
+//
+
+#rightArm.animated {
+  @include transform-origin(140.682px 62.01px);
+  @include animation-name(rightArm);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.050420168067226885s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightArm) {
+  50% {
+    @include transform-rotate(-83.74deg);
+  }
+}
+
+#rightLowerArm.animated {
+  @include transform-origin(108.87px 71.01px);
+  @include animation-name(rightLowerArm);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.3529411764705882s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightLowerArm) {
+  50% {
+    @include transform-rotate(46.38deg);
+  }
+}
+
+#rightHand.animated {
+  @include transform-origin(132.599px 89.51px);
+  @include animation-name(rightHand);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightHand) {
+  50% {
+    @include transform-rotate(-28.16deg);
+  }
+}
+
+#rightLeg.animated {
+  @include transform-origin(129.14px 118.073px);
+  @include animation-name(rightLeg);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightLeg) {
+  50% {
+    @include transform-rotate(88.36deg);
+  }
+}
+
+#rightLowerLeg.animated {
+  @include transform-origin(172.37px 143.677px);
+  @include animation-name(rightLowerLeg);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.15126050420168063s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightLowerLeg) {
+  55% {
+    @include transform-rotate(117.37deg);
+  }
+}
+
+#rightFoot.animated {
+  @include transform-origin(202.301px 178.26px);
+  @include animation-name(rightFoot);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.1411764705882353s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(rightFoot) {
+  20% {
+    @include transform-rotate(50.85deg);
+  }
+}
+
+//
+// LEFT 
+//
+
+#leftArm.animated {
+  @include transform-origin(140.682px 62.01px);
+  @include animation-name(leftArm);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.4033613445378151s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftArm) {
+  50% {
+    @include transform-rotate(-83.74deg);
+  }
+}
+
+#leftLowerArm.animated {
+  @include transform-origin(108.87px 71.01px);
+  @include animation-name(leftLowerArm);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.7058823529411764s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftLowerArm) {
+  50% {
+    @include transform-rotate(46.38deg);
+  }
+}
+
+#leftHand.animated {
+  @include transform-origin(132.599px 89.51px);
+  @include animation-name(leftHand);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.3529411764705882s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftHand) {
+  50% {
+    @include transform-rotate(-28.16deg);
+  }
+}
+
+#leftLeg.animated {
+  @include transform-origin(129.14px 118.073px);
+  @include animation-name(leftLeg);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.3529411764705882s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftLeg) {
+  50% {
+    @include transform-rotate(88.36deg);
+  }
+}
+
+#leftLowerLeg.animated {
+  @include transform-origin(172.37px 143.677px);
+  @include animation-name(leftLowerLeg);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.5042016806722689s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftLowerLeg) {
+  55% {
+    @include transform-rotate(117.37deg);
+  }
+}
+
+#leftFoot.animated {
+  @include transform-origin(202.301px 178.26px);
+  @include animation-name(leftFoot);
+  @include animation-duration(0.7058823529411764s);
+  @include animation-timing-function(cubic-bezier(0.5,0.0,0.5,1.0));
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-delay(0.4941176470588235s);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(leftFoot) {
+  20% {
+    @include transform-rotate(50.85deg);
+  }
+}
+
+//
+// SCENE
+//
+
+#newYork-ink.animated {
+  @include transform-origin(0px 0px);
+  @include animation-name(scene);
+  @include animation-duration(21.176470588235293s);
+  @include animation-timing-function(linear);
+  @include animation-iteration-count(infinite);
+  @include animation-direction(normal);
+  @include animation-play-state(paused);
+}
+
+@include keyframes(scene) {
+  0% {
+    @include transform-dimension(-350px, 0, 0);
+  }
+  100% {
+    @include transform-dimension(-4500px, 0, 0);
+  }
+}
+
+//
+// MEDIA QUERIES
+//
+
+// iphone 5, portrait
+@media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+
+.container {
+  top: 48%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+
+.button {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.buttonGroup {
+  width: 300px;
+  margin-left: -150px;
+  bottom: 16px;
+}
+
+svg#newYork-ink{
+  bottom: 31px;
+}
+}
+
+//iphone 5, landscape
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape) { 
+
+.container {
+  width: 320px;
+  height: 320px;
+  margin-top: -160px;
+  margin-left: -160px;
+}
+
+svg#newYork-ink{
+  bottom: 23px;
+}
+
+.buttonGroup {
+  left: 0;
+  width: 80px;
+  margin-left: 0px;
+  bottom: 24px;
+}
+
+.button {
+  margin-bottom: 16px;
+}
+}
+
+// iphone 6, landscape
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) { 
+
+.container {
+  width: 360px;
+  height: 360px;
+  margin-top: -180px;
+  margin-left: -180px;
+}
+
+svg#newYork-ink{
+  height: 350px;
+  bottom: 28px;
+}
+
+.buttonGroup {
+  left: 0;
+  width: 80px;
+  margin-left: 0px;
+  bottom: 35px;
+}
+
+.button {
+  margin-bottom: 16px;
+}
+}
+
+
+
+
+
